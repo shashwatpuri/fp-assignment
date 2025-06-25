@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "title": "Imagine",
+    "artist": "John Lennon",
+    "album": "Imagine",
+    "duration": 183,
+    "genre": "Rock",
+    "year": 1971,
+    "coverUrl": "https://upload.wikimedia.org/wikipedia/en/2/25/JohnLennon-albums-imagine.jpg"
+  },
+  {
+    "id": "2",
+    "title": "Bohemian Rhapsody",
+    "artist": "Queen",
+    "album": "A Night at the Opera",
+    "duration": 354,
+    "genre": "Rock",
+    "year": 1975,
+    "coverUrl": "https://upload.wikimedia.org/wikipedia/en/9/9f/Bohemian_Rhapsody.png"
+  },
+  {
+    "id": "3",
+    "title": "Billie Jean",
+    "artist": "Michael Jackson",
+    "album": "Thriller",
+    "duration": 294,
+    "genre": "Pop",
+    "year": 1982,
+    "coverUrl": "https://upload.wikimedia.org/wikipedia/en/2/22/Michael_Jackson_-_Billie_Jean.png"
+  }
+] 

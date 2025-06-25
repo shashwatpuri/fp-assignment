@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "email": "admin",
+    "password": "adminpass",
+    "role": "admin"
+  },
+  {
+    "id": "4",
+    "email": "shashwat@gmal.com",
+    "password": "$2b$10$9/UNmBKd3YXWLObAVSTtGu0Z3tleouHP.PMyFJxNZGFVyqL68XpxK",
+    "role": "user"
+  },
+  {
+    "id": "5",
+    "email": "shashwat@gmal.cm",
+    "password": "$2b$10$59jzgSuEaN1zpzV2kW.q5esWJ6/YJqROr5AtpWZg0Jhg8Skhs5LMS",
+    "role": "user"
+  },
+  {
+    "id": "4",
+    "email": "shashwat@gmail.com",
+    "password": "$2b$10$5dK4SupLAPOme56PIx1l4OWst5i2ZVHLbiKWYz4qzoM1LBD6jJvQ6",
+    "role": "user"
+  }
+]
