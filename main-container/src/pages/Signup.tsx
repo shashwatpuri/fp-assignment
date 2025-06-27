@@ -33,6 +33,7 @@ function Signup() {
     try {
       const response = await fetch(`${apiBaseUrl}/api/unauth/signup`, {
         method: "POST",
+        mode: "cors",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify({ email, password, name }),

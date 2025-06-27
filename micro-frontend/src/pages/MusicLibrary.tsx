@@ -375,6 +375,7 @@ export default function MusicLibrary({ isAuthenticated, user }: Props) {
     setLoading(true);
     setError(null);
     try {
+      console.log(`${apiBaseUrl}/api/auth/songs`)
       const result = await fetchWithAuth(`${apiBaseUrl}/api/auth/songs`);
       if (result.success && result.data && Array.isArray(result.data.songs)) {
         setSongs(result.data.songs);

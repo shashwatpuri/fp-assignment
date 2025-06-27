@@ -7,6 +7,7 @@ export async function fetchWithAuth(url: string, options: RequestInit = {}): Pro
   try {
     const response = await fetch(url, {
       credentials: 'include',
+      mode: 'cors',
       ...options,
     });
     let data;

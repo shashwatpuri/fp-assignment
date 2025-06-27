@@ -29,6 +29,7 @@ function Signin() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
+        mode: "cors",
         body: JSON.stringify({ email, password }),
       })
       console.log(response)
@@ -39,6 +40,7 @@ function Signin() {
 
       window.location.reload()
     } catch (err: any) {
+      console.log(err)
       setError(err.message || "An error occurred during signin")
     } finally {
       setIsSubmitting(false)
