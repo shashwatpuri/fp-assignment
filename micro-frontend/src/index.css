@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+select, option {
+  background: #18181b;
+  color: hsl(0, 0%, 94%);
+}

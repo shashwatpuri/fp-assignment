@@ -1,0 +1,94 @@
+[
+  {
+    "id": 1,
+    "title": "Imagine",
+    "artist": "John Lennon",
+    "album": "Imagine",
+    "duration": 183,
+    "genre": "Rock"
+  },
+  {
+    "id": 2,
+    "title": "Bohemian Rhapsody",
+    "artist": "Queen",
+    "album": "A Night at the Opera",
+    "duration": 354
+  },
+  {
+    "id": 3,
+    "title": "Billie Jean",
+    "artist": "Michael Jackson",
+    "album": "Thriller",
+    "duration": 294
+  },
+  {
+    "id": 4,
+    "title": "Blinding Lights",
+    "artist": "The Weeknd",
+    "album": "After Hours",
+    "duration": 200
+  },
+  {
+    "id": 5,
+    "title": "Levitating",
+    "artist": "Dua Lipa",
+    "album": "Future Nostalgia",
+    "duration": 203
+  },
+  {
+    "id": 6,
+    "title": "Peaches",
+    "artist": "Justin Bieber",
+    "album": "Justice",
+    "duration": 198
+  },
+  {
+    "id": 7,
+    "title": "Save Your Tears",
+    "artist": "The Weeknd",
+    "album": "After Hours",
+    "duration": 215
+  },
+  {
+    "id": 8,
+    "title": "Watermelon Sugar",
+    "artist": "Harry Styles",
+    "album": "Fine Line",
+    "duration": 174
+  },
+  {
+    "id": 9,
+    "title": "Don't Start Now",
+    "artist": "Dua Lipa",
+    "album": "Future Nostalgia",
+    "duration": 183
+  },
+  {
+    "id": 1751014394563,
+    "title": "Billie #2",
+    "artist": "Michael Jackson",
+    "album": "Thriller",
+    "duration": 123
+  },
+  {
+    "id": 1751014395001,
+    "title": "Pyar Kiya To Darna Kya",
+    "artist": "Lata Mangeshkar",
+    "album": "Mughal-E-Azam",
+    "duration": 320
+  },
+  {
+    "id": 1751014395002,
+    "title": "Mohe Panghat Pe",
+    "artist": "Lata Mangeshkar",
+    "album": "Mughal-E-Azam",
+    "duration": 270
+  },
+  {
+    "id": 1751014395003,
+    "title": "Bekas Pe Karam Keejiye",
+    "artist": "Mohammed Rafi, Lata Mangeshkar",
+    "album": "Mughal-E-Azam",
+    "duration": 250
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1",
+    "email": "admin",
+    "password": "adminpass",
+    "role": "admin"
+  },
+  {
+    "id": "7",
+    "name": "Shashwat",
+    "email": "goswamishashwatpuri1@gmail.com",
+    "password": "$2b$10$2JU4cD.E2Irz3KI4aYLwfeom7L0UGGJGYjZP5hnjLFzsynv3i5Qf2",
+    "role": "user"
+  },
+  {
+    "id": "3",
+    "email": "goswamishashwat@gmail.com",
+    "name": "Puri",
+    "password": "$2b$10$cHFu2TY90TF/W2ZP79li8eFaorKgBTDsIp8l0mTG3sV8IiV3WL5e.",
+    "role": "user"
+  },
+  {
+    "id": "4",
+    "email": "raghav@gmail.com",
+    "name": "Raghav",
+    "password": "$2b$10$WjpYYr3AQ9b6D.FGL5zcSu4GjJxHUYJFZWeWd.hBvtn8Cg5IfFlFO",
+    "role": "user"
+  }
+]
