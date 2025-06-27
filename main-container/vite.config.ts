@@ -16,6 +16,7 @@ export default defineConfig({
       name: 'maincontainer',
       remotes: {
         microfrontend: `${remoteModuleUrl}/assets/remoteEntry.js`
+        // microfrontend: `http://localhost:4173/assets/remoteEntry.js`
       },
       shared: ['react', 'react-dom']
     })
