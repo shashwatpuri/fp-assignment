@@ -19,7 +19,7 @@ const signupHandler = async (req: Request, res: Response) => {
       return;
     }
 
-    const { email, password } = req.body;
+    const { email, password, name } = req.body;
     const users: User[] = readUsers();
 
     const existingUser = findUser(email);
@@ -37,6 +37,7 @@ const signupHandler = async (req: Request, res: Response) => {
     const newUser: User = {
       id: (users.length + 1).toString(),
       email,
+      name,
       password: hashedPassword,
       role: UserRole.USER
     };

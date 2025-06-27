@@ -12,9 +12,9 @@ export default defineConfig({
       name: 'microfrontend',
       filename: 'remoteEntry.js',
       exposes: {
-        './TestApp': './src/pages/TestApp'
+        './MusicLibrary': './src/pages/MusicLibrary'
       },
-      // shared: ['react', 'react-dom'],
+      shared: ['react', 'react-dom'],
     })
   ],
   build: {

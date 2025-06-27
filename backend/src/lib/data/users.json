@@ -6,21 +6,24 @@
     "role": "admin"
   },
   {
-    "id": "4",
-    "email": "shashwat@gmal.com",
-    "password": "$2b$10$9/UNmBKd3YXWLObAVSTtGu0Z3tleouHP.PMyFJxNZGFVyqL68XpxK",
+    "id": "7",
+    "name": "Shashwat",
+    "email": "goswamishashwatpuri1@gmail.com",
+    "password": "$2b$10$2JU4cD.E2Irz3KI4aYLwfeom7L0UGGJGYjZP5hnjLFzsynv3i5Qf2",
     "role": "user"
   },
   {
-    "id": "5",
-    "email": "shashwat@gmal.cm",
-    "password": "$2b$10$59jzgSuEaN1zpzV2kW.q5esWJ6/YJqROr5AtpWZg0Jhg8Skhs5LMS",
+    "id": "3",
+    "email": "goswamishashwat@gmail.com",
+    "name": "Puri",
+    "password": "$2b$10$cHFu2TY90TF/W2ZP79li8eFaorKgBTDsIp8l0mTG3sV8IiV3WL5e.",
     "role": "user"
   },
   {
     "id": "4",
-    "email": "shashwat@gmail.com",
-    "password": "$2b$10$5dK4SupLAPOme56PIx1l4OWst5i2ZVHLbiKWYz4qzoM1LBD6jJvQ6",
+    "email": "raghav@gmail.com",
+    "name": "Raghav",
+    "password": "$2b$10$WjpYYr3AQ9b6D.FGL5zcSu4GjJxHUYJFZWeWd.hBvtn8Cg5IfFlFO",
     "role": "user"
   }
 ]
