@@ -1,10 +1,10 @@
-/// <reference types="vite/client" />
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import federation from '@originjs/vite-plugin-federation'
 
-const remoteModuleUrl = import.meta.env.VITE_REMOTE_MODULE_URL;
+const env = loadEnv("production", process.cwd(), '');
+const remoteModuleUrl = env.VITE_REMOTE_MODULE_URL || "http://localhost:5174";
 
 
 // https://vite.dev/config/
@@ -16,6 +16,7 @@ export default defineConfig({
       name: 'maincontainer',
       remotes: {
         microfrontend: `${remoteModuleUrl}/assets/remoteEntry.js`
+        // microfrontend: `http://localhost:4173/assets/remoteEntry.js`
       },
       shared: ['react', 'react-dom']
     })

@@ -2,6 +2,7 @@ export async function fetchWithAuth(url: string, options: RequestInit = {}) {
   try {
     const response = await fetch(url, {
       credentials: 'include',
+      mode: 'cors',
       ...options,
     });
     const data = await response.json().catch(() => undefined);

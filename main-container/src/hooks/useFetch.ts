@@ -18,6 +18,7 @@ export function useFetch<T = any>(
     try {
       const response = await fetch(url, {
         credentials: 'include',
+        mode: 'cors',
         ...options,
       });
       if (!response.ok) {

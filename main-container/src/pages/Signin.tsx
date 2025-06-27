@@ -12,7 +12,7 @@ function Signin() {
   const [error, setError] = useState("")
 
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
-
+  console.log(apiBaseUrl)
   if (loading) return (
     <div className="min-h-screen flex items-center justify-center bg-background">
       <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
@@ -29,9 +29,10 @@ function Signin() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
+        mode: "cors",
         body: JSON.stringify({ email, password }),
       })
-
+      console.log(response)
       if (!response.ok) {
         const errorData = await response.json()
         throw new Error(errorData.message || "Signin failed")
@@ -39,6 +40,7 @@ function Signin() {
 
       window.location.reload()
     } catch (err: any) {
+      console.log(err)
       setError(err.message || "An error occurred during signin")
     } finally {
       setIsSubmitting(false)

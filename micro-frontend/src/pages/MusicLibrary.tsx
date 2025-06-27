@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { Search, ArrowUp, ArrowDown, ListFilter, Layers, ChevronDown, SkipBack, Play, Pause, SkipForward, Trash, Plus, X, LogOut } from "lucide-react";
+import { Search, ArrowUp, ArrowDown, ListFilter, Layers, ChevronDown, SkipBack, Play, Pause, SkipForward, Trash, Plus, X } from "lucide-react";
 import ReactDOM from "react-dom";
 import CustomLoader from "../components/CustomLoader";
 import ErrorPortal from "../components/ErrorPortal";
@@ -339,26 +339,26 @@ function NowPlayingBar({ song }: { song: Song }) {
   );
 }
 
-function TopBar({ user, onSignOut }: { user: any, onSignOut: () => void }) {
-  return (
-    <GlassCard className="fixed top-0 left-0 right-0 z-50 max-w-3xl mx-auto flex items-center justify-between py-3 px-6 mb-0 rounded-b-2xl rounded-t-none border-t-0">
-      <div className="flex items-center gap-3">
-        <span className="text-lg text-white">Hi, {user.name}</span>
-        <span className={
-          `px-3 py-1 rounded-full text-xs font-semibold ml-2 bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-sm`
-        }>
-          {user.role}
-        </span>
-      </div>
-      <button
-        className="flex items-center gap-2 px-4 py-2 bg-black/30 text-white rounded-lg border border-blue-400/30 hover:bg-black/40 transition font-semibold"
-        onClick={onSignOut}
-      >
-        <LogOut className="w-5 h-5" /> Sign out
-      </button>
-    </GlassCard>
-  );
-}
+// function TopBar({ user, onSignOut }: { user: any, onSignOut: () => void }) {
+//   return (
+//     <GlassCard className="fixed top-0 left-0 right-0 z-50 max-w-3xl mx-auto flex items-center justify-between py-3 px-6 mb-0 rounded-b-2xl rounded-t-none border-t-0">
+//       <div className="flex items-center gap-3">
+//         <span className="text-lg text-white">Hi, {user.name}</span>
+//         <span className={
+//           `px-3 py-1 rounded-full text-xs font-semibold ml-2 bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-sm`
+//         }>
+//           {user.role}
+//         </span>
+//       </div>
+//       <button
+//         className="flex items-center gap-2 px-4 py-2 bg-black/30 text-white rounded-lg border border-blue-400/30 hover:bg-black/40 transition font-semibold"
+//         onClick={onSignOut}
+//       >
+//         <LogOut className="w-5 h-5" /> Sign out
+//       </button>
+//     </GlassCard>
+//   );
+// }
 
 export default function MusicLibrary({ isAuthenticated, user }: Props) {
   const [songs, setSongs] = useState<Song[]>([]);
@@ -375,6 +375,7 @@ export default function MusicLibrary({ isAuthenticated, user }: Props) {
     setLoading(true);
     setError(null);
     try {
+      console.log(`${apiBaseUrl}/api/auth/songs`)
       const result = await fetchWithAuth(`${apiBaseUrl}/api/auth/songs`);
       if (result.success && result.data && Array.isArray(result.data.songs)) {
         setSongs(result.data.songs);
@@ -479,13 +480,13 @@ export default function MusicLibrary({ isAuthenticated, user }: Props) {
           style={{ backgroundImage: `url(${BG_IMAGE})` }}
         />
         <div className="relative z-10 w-full max-w-3xl mx-auto mt-16 mb-10 flex flex-col gap-0">
-          <TopBar user={user} onSignOut={() => {
+          {/* <TopBar user={user} onSignOut={() => {
             fetchWithAuth(`${apiBaseUrl}/api/auth/signout`, {
               method: "POST",
             }).then(() => {
               window.location.reload();
             });
-          }} />
+          }} /> */}
           <div className="flex flex-col gap-4 mt-5">
             <Controls
               searchTerm={searchTerm}
