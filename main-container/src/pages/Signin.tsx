@@ -12,6 +12,7 @@ function Signin() {
   const [error, setError] = useState("")
 
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+  console.log(apiBaseUrl)
 
   if (loading) return (
     <div className="min-h-screen flex items-center justify-center bg-background">
@@ -31,7 +32,7 @@ function Signin() {
         credentials: "include",
         body: JSON.stringify({ email, password }),
       })
-
+      console.log(response)
       if (!response.ok) {
         const errorData = await response.json()
         throw new Error(errorData.message || "Signin failed")
