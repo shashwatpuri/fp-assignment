@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { Search, ArrowUp, ArrowDown, ListFilter, Layers, ChevronDown, SkipBack, Play, Pause, SkipForward, Trash, Plus, X, LogOut } from "lucide-react";
+import { Search, ArrowUp, ArrowDown, ListFilter, Layers, ChevronDown, SkipBack, Play, Pause, SkipForward, Trash, Plus, X } from "lucide-react";
 import ReactDOM from "react-dom";
 import CustomLoader from "../components/CustomLoader";
 import ErrorPortal from "../components/ErrorPortal";
