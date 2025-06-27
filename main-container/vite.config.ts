@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import federation from '@originjs/vite-plugin-federation'
 
-const remoteModuleUrl = import.meta.env.VITE_REMOTE_MODULE_URL;
+const remoteModuleUrl = import.meta.env.REMOTE_MODULE_URL;
 
 
 // https://vite.dev/config/
