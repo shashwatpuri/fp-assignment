@@ -1,11 +1,5 @@
 [
   {
-    "id": "1",
-    "email": "admin",
-    "password": "adminpass",
-    "role": "admin"
-  },
-  {
     "id": "7",
     "name": "Shashwat",
     "email": "goswamishashwatpuri1@gmail.com",
@@ -24,6 +18,20 @@
     "email": "raghav@gmail.com",
     "name": "Raghav",
     "password": "$2b$10$WjpYYr3AQ9b6D.FGL5zcSu4GjJxHUYJFZWeWd.hBvtn8Cg5IfFlFO",
+    "role": "user"
+  },
+  {
+    "id": "5",
+    "email": "admin@gmail.com",
+    "name": "admin",
+    "password": "$2b$10$XUcIQvf762ZWAC9QSlcBEOYDeiWodrn7HEKjrw6MYswoSvrm2jG16",
+    "role": "admin"
+  },
+  {
+    "id": "6",
+    "email": "test@gmail.com",
+    "name": "Test User",
+    "password": "$2b$10$lkIFfy/D5jLiJhWoJUskdeV788g..ERnsWOpi8qi3SQyTIn2b5gXu",
     "role": "user"
   }
 ]
