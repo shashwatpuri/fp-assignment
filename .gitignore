@@ -69,3 +69,5 @@ backend/dist/
 
 # VSCode settings
 .vscode/
+
+.notes/
