@@ -10,7 +10,8 @@ interface ErrorPortalProps {
 
 function GlassCard({ children, className = "" }: { children: React.ReactNode, className?: string }) {
   return (
-    <div className={`bg-black/30 backdrop-blur-lg rounded-2xl shadow-lg border border-white/10 p-6 ${className}`}>
+    <div className={`bg-black/30 backdrop-blur-lg rounded-2xl shadow-lg border border-white/10 p-6 
+    ${className}`}>
       {children}
     </div>
   );
@@ -41,7 +42,7 @@ export default function ErrorPortal({ message, reload = false, onClose }: ErrorP
               onClick={handleClose}
               className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition"
             >
-              OK
+              Okay
             </button>
           )}
         </div>

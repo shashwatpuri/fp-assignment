@@ -132,7 +132,7 @@ function AddSongForm({ onAdd, adding }: { onAdd: (song: any) => void, adding: bo
   const [form, setForm] = useState({ title: "", artist: "", album: "", duration: "" });
   const [show, setShow] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (form.title && form.artist && form.album && form.duration) {
       const durationInSeconds = parseInt(form.duration);
@@ -202,7 +202,7 @@ function AddSongForm({ onAdd, adding }: { onAdd: (song: any) => void, adding: bo
             type="submit"
             disabled={adding}
           >
-            Add
+            {adding ? <CustomLoader message="Adding song..." /> : "Add"}
           </button>
         </form>
       )}
@@ -339,43 +339,25 @@ function NowPlayingBar({ song }: { song: Song }) {
   );
 }
 
-// function TopBar({ user, onSignOut }: { user: any, onSignOut: () => void }) {
-//   return (
-//     <GlassCard className="fixed top-0 left-0 right-0 z-50 max-w-3xl mx-auto flex items-center justify-between py-3 px-6 mb-0 rounded-b-2xl rounded-t-none border-t-0">
-//       <div className="flex items-center gap-3">
-//         <span className="text-lg text-white">Hi, {user.name}</span>
-//         <span className={
-//           `px-3 py-1 rounded-full text-xs font-semibold ml-2 bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-sm`
-//         }>
-//           {user.role}
-//         </span>
-//       </div>
-//       <button
-//         className="flex items-center gap-2 px-4 py-2 bg-black/30 text-white rounded-lg border border-blue-400/30 hover:bg-black/40 transition font-semibold"
-//         onClick={onSignOut}
-//       >
-//         <LogOut className="w-5 h-5" /> Sign out
-//       </button>
-//     </GlassCard>
-//   );
-// }
-
 export default function MusicLibrary({ isAuthenticated, user }: Props) {
   const [songs, setSongs] = useState<Song[]>([]);
   const [nowPlaying, setNowPlaying] = useState<Song | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState<'title' | 'artist' | 'album'>("title");
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>("asc");
-  const [groupBy, setGroupBy] = useState<'none' | 'artist' | 'album'>("none");
+  const [groupBy, setGroupBy] = useState<'none' | "artist" | "album">("none");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [adding, setAdding] = useState(false);
+
+  useEffect(() => {
+    fetchSongs();
+  }, []);
 
   async function fetchSongs() {
     setLoading(true);
     setError(null);
     try {
-      console.log(`${apiBaseUrl}/api/auth/songs`)
       const result = await fetchWithAuth(`${apiBaseUrl}/api/auth/songs`);
       if (result.success && result.data && Array.isArray(result.data.songs)) {
         setSongs(result.data.songs);
@@ -389,11 +371,7 @@ export default function MusicLibrary({ isAuthenticated, user }: Props) {
     }
   }
 
-  useEffect(() => {
-    fetchSongs();
-  }, []);
-
-  const handleAddSong = async (song: Song) => {
+  async function handleAddSong(song: Song) {
     setAdding(true);
     setError(null);
     try {
@@ -414,7 +392,7 @@ export default function MusicLibrary({ isAuthenticated, user }: Props) {
     }
   };
 
-  const handleDeleteSong = async (id: number) => {
+  async function handleDeleteSong(id: number) {
     setError(null);
     try {
       const result = await fetchWithAuth(`${apiBaseUrl}/api/auth/songs/${id}`, {
@@ -430,9 +408,11 @@ export default function MusicLibrary({ isAuthenticated, user }: Props) {
     }
   };
 
-  const handlePlaySong = (song: Song) => setNowPlaying(song);
+  function handlePlaySong(song: Song) {
+    setNowPlaying(song);
+  }
 
-  const filteredAndSortedSongs = useMemo(() => {
+  const filteredGroupedAndSortedSongs = useMemo(() => {
     let filtered = songs.filter(song => {
       if (!searchTerm) return true;
       return (
@@ -441,6 +421,7 @@ export default function MusicLibrary({ isAuthenticated, user }: Props) {
         song.album.toLowerCase().includes(searchTerm.toLowerCase())
       );
     });
+
     filtered.sort((a, b) => {
       const aValue = a[sortBy].toLowerCase();
       const bValue = b[sortBy].toLowerCase();
@@ -448,20 +429,21 @@ export default function MusicLibrary({ isAuthenticated, user }: Props) {
         ? aValue.localeCompare(bValue)
         : bValue.localeCompare(aValue);
     });
-    return filtered;
-  }, [songs, searchTerm, sortBy, sortOrder]);
 
-  const groupedSongs = useMemo(() => {
     if (groupBy === 'none') {
-      return { 'All Songs': filteredAndSortedSongs };
+      return { 'All Songs': filtered };
     }
-    return filteredAndSortedSongs.reduce((groups, song) => {
+    return filtered.reduce((groups, song) => {
       const key = song[groupBy];
-      if (!groups[key]) groups[key] = [];
+
+      if (!groups[key]) {
+        groups[key] = [];
+      }
       groups[key].push(song);
       return groups;
     }, {} as Record<string, Song[]>);
-  }, [filteredAndSortedSongs, groupBy]);
+
+  }, [songs, searchTerm, sortBy, sortOrder, groupBy]);
 
   if (!isAuthenticated)
     return <div className="min-h-screen flex items-center justify-center text-white text-2xl">Please Sign in First</div>;
@@ -469,7 +451,6 @@ export default function MusicLibrary({ isAuthenticated, user }: Props) {
     return <div className="min-h-screen flex items-center justify-center">
       <CustomLoader message="Loading songs..." />
     </div>;
-
   if (error)
     return <ErrorPortal message={error} reload={true} />;
 
@@ -479,37 +460,26 @@ export default function MusicLibrary({ isAuthenticated, user }: Props) {
         <div className="absolute inset-0 bg-black/60 z-0 bg-cover bg-center bg-fixed"
           style={{ backgroundImage: `url(${BG_IMAGE})` }}
         />
-        <div className="relative z-10 w-full max-w-3xl mx-auto mt-16 mb-10 flex flex-col gap-0">
-          {/* <TopBar user={user} onSignOut={() => {
-            fetchWithAuth(`${apiBaseUrl}/api/auth/signout`, {
-              method: "POST",
-            }).then(() => {
-              window.location.reload();
-            });
-          }} /> */}
-          <div className="flex flex-col gap-4 mt-5">
-            <Controls
-              searchTerm={searchTerm}
-              setSearchTerm={setSearchTerm}
-              sortBy={sortBy}
-              setSortBy={setSortBy}
-              sortOrder={sortOrder}
-              setSortOrder={setSortOrder}
-              groupBy={groupBy}
-              setGroupBy={setGroupBy}
-              user={user}
-              onAddSong={handleAddSong}
-              adding={adding}
-            />
-          </div>
+        <div className="relative z-10 w-full max-w-3xl mx-auto mt-20 mb-10 flex flex-col">
+          <Controls
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            sortBy={sortBy}
+            setSortBy={setSortBy}
+            sortOrder={sortOrder}
+            setSortOrder={setSortOrder}
+            groupBy={groupBy}
+            setGroupBy={setGroupBy}
+            user={user}
+            onAddSong={handleAddSong}
+            adding={adding}
+          />
           <GlassCard className="mb-24">
             <div className="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <div>
-                <div className="text-2xl font-bold text-white">Music Library</div>
-              </div>
+              <p className="text-2xl font-bold text-white">Music Library</p>
             </div>
             <div className="mt-4">
-              {Object.entries(groupedSongs).map(([groupName, groupSongs]) => (
+              {Object.entries(filteredGroupedAndSortedSongs).map(([groupName, groupSongs]) => (
                 <div key={groupName} className="mb-8">
                   {groupBy !== 'none' && (
                     <h2 className="text-lg font-semibold text-white/80 mt-4 mb-1">
