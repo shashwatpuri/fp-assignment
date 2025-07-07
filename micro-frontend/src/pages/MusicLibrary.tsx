@@ -268,10 +268,10 @@ function SongCard({ song, isAdmin, onDelete, onPlay }: any) {
 
 function NowPlayingBar({ song }: { song: Song }) {
   const totalSeconds = song ? song.duration : 0;
-  const [isPlaying, setIsPlaying] = React.useState(false);
-  const [currentSeconds, setCurrentSeconds] = React.useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentSeconds, setCurrentSeconds] = useState(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isPlaying) return;
     if (currentSeconds >= totalSeconds) return;
     const interval = setInterval(() => {
@@ -280,7 +280,7 @@ function NowPlayingBar({ song }: { song: Song }) {
     return () => clearInterval(interval);
   }, [isPlaying, currentSeconds, totalSeconds]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setCurrentSeconds(0);
     setIsPlaying(false);
   }, [song]);

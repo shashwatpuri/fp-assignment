@@ -9,7 +9,6 @@ export class ErrorBoundary extends React.Component<{ children: React.ReactNode; 
     return { hasError: true };
   }
   componentDidCatch(error: any, info: any) {
-    // You can log error or info here if needed
     console.log(error, info);
   }
   render() {
